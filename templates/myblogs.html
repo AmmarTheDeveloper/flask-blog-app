@@ -1,0 +1,42 @@
+{% extends 'common/base.html' %}
+{% block title %}
+  My Blogs || Blog Application
+{% endblock %}
+{% block body %}
+  {% include 'common/navbar.html' %}
+  <div class="container pb-5">
+    {% if message is defined %}
+      <div class="alert my-2 {{ message.cssClass }}">{{ message.message }}</div>
+    {% endif %}
+
+    <h1 class="my-5 text-center">My Blogs</h1>
+
+    <div class="row gx-3 justify-content-center">
+      {% if blogs|length == 0 %}
+        <div class="container text-center">
+          <div class="alert alert-danger">No blogs posted by you</div>
+          <a href="/add-blog" class="btn btn-primary">Add Blog</a>
+        </div>
+      {% else %}
+        {% for blog in blogs %}
+          <div class="col-sm-6 col-md-4">
+            <div class="card">
+              <div class="ratio ratio-16x9">
+                <img src="/images/{{ blog.thumbnail }}" class="img-fluid rounded object-fit-cover" width="100%" />
+              </div>
+              <div class="card-body">
+                <h2 class="mt-2 mb-3 text-center">{{ blog.title }}</h2>
+                <p class="blog-content">{{ blog.content }}</p>
+              </div>
+              <div class="card-footer text-center">
+                <a href="/blog/delete/{{ blog.id }}" class="btn btn-danger">Delete</a>
+                <a href="/blog/edit/{{ blog.id }}" class="btn btn-info">Update</a>
+                <a href="/blog/{{ blog.id }}" class="btn btn-primary">Read more</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

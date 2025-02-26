@@ -1,0 +1,37 @@
+{% extends 'common/base.html' %}
+{% block title %}
+  {{ blog.title }} || Blog Application
+{% endblock %}
+
+{% block body %}
+  {% include 'common/navbar.html' %}
+  <div class="container">
+    <div class="row justify-content-center my-5">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="ratio ratio-16x9">
+            <img src="/images/{{ blog.thumbnail }}" class="img-fluid rounded object-fit-cover" width="100%" />
+          </div>
+          <div class="border py-2 px-5 border-l-transparent border-r-transparent border-light">
+            <div class="d-flex gap-3 align-items-center">
+              <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0VykKbAbaa7tNQ143EKaeGO22WXPDSXQLaQ&s" class="img-fluid rounded-circle" height="38px" width="38px" />
+              </div>
+              <div>
+                <p class="m-0">{{ blog.author.name }}</p>
+                <p class="m-0">{{ blog.created_at.strftime('%B %d, %Y %I:%M %p') }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h2 class="mt-2 mb-3 text-center">{{ blog.title }}</h2>
+            <p>{{ blog.content }}</p>
+          </div>
+          <div class="card-footer text-center">
+            <a href="/" class="btn btn-primary">Go back to home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

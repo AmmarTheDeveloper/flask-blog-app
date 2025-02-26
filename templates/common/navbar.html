@@ -1,0 +1,75 @@
+{% set user = getUser() %}
+
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow">
+  <div class="container md-px-0 px-5">
+    <a class="navbar-brand" href="#">Blog App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/add-blog">Add Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/myblogs">My Blogs</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0VykKbAbaa7tNQ143EKaeGO22WXPDSXQLaQ&s" class="img-fluid rounded-circle" height="38px" width="38px" /></a>
+
+          <ul class="dropdown-menu">
+            <li>
+              <button type="button" class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                {{user.name}}
+
+              </button>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Profile</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="text-center">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0VykKbAbaa7tNQ143EKaeGO22WXPDSXQLaQ&s" height="100px" width="100px" class="img-fluid rounded-circle" />
+        </div>
+        <table class="table table-hover">
+          <tr>
+            <th scope="col">Id</th>
+            <td scope="col">{{user.id}}</td>
+          </tr>
+          <tr>
+            <th scope="col">Name</th>
+            <td scope="col">{{user.name}}</td>
+          </tr>
+          <tr>
+            <th scope="col">Email</th>
+            <td scope="col">{{user.email}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>

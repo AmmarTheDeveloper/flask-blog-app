@@ -1,0 +1,33 @@
+{% extends 'common/base.html' %}
+{% block title %}
+  Update Blog || Blog Application
+{% endblock %}
+
+{% block body %}
+  {% include 'common/navbar.html' %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="p-5 col-12 col-md-6">
+        <form action="/blog/edit/{{ blog.id }}" method="POST" enctype="multipart/form-data">
+          <h1 class="text-center my-2">Add Blog</h1>
+          {% if message is defined %}
+            <div class="alert {{ message.getCssClass() }}">{{ message.getMessage() }}</div>
+          {% endif %}
+          <div class="mb-3">
+            <label for="title" class="form-label">Blog Title</label>
+            <input type="text" class="form-control" value="{{ blog.title }}" id="title" name="title" placeholder="Enter Blog title" />
+          </div>
+          <div class="mb-3">
+            <label for="thumbnail" class="form-label">Upload thumbnail</label>
+            <input type="file" class="form-control" id="thumbnail" name="thumbnail" />
+          </div>
+          <div class="mb-3">
+            <label for="content" class="form-label">Blog Content</label>
+            <textarea class="form-control" placeholder="Enter blog content..." id="content" name="content">{{ blog.content }}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
