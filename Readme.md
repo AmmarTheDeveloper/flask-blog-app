@@ -44,7 +44,7 @@ Before running this project, ensure you have the following installed:
    ```
 4. **Start the application:**  
    ```sh
-   flask run
+   py run.py
    ```
 5. Open your browser and go to **http://127.0.0.1:5000**
 
